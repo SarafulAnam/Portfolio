@@ -36,7 +36,46 @@
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
     <!-- Main CSS File -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      rel="stylesheet"
+    />
+    <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
+
+    <style>
+      /* ===== PORTFOLIO IMAGE SIZE ===== */
+      .portfolio-details .swiper-slide img {
+        width: 100%;
+        height: 500px;
+        object-fit: contain;
+      }
+
+      /* ===== RIGHT COLUMN ALIGN TOP ===== */
+      .portfolio-details .portfolio-info,
+      .portfolio-details .portfolio-description {
+        margin-top: 0;
+      }
+
+      /* ===== DARK OVERLAY ON SLIDER IMAGES ===== */
+      .portfolio-details .swiper-slide {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .portfolio-details .swiper-slide::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1;
+      }
+
+      .portfolio-details .swiper-slide img {
+        position: relative;
+        z-index: 0;
+      }
+    </style>
 
     <!-- =======================================================
   * Template Name: iPortfolio
@@ -84,31 +123,33 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li>
-            <a href="#hero" class="active"
+            <a href="index.html#hero"
               ><i class="bi bi-house navicon"></i>Home</a
             >
           </li>
           <li>
-            <a href="#about"><i class="bi bi-person navicon"></i> About</a>
-          </li>
-          <li>
-            <a href="#resume"
-              ><i class="bi bi-file-earmark-text navicon"></i> Resume</a
+            <a href="index.html#about"
+              ><i class="bi bi-person navicon"></i>About</a
             >
           </li>
           <li>
-            <a href="#portfolio"
-              ><i class="bi bi-images navicon"></i> Portfolio</a
+            <a href="index.html#resume"
+              ><i class="bi bi-file-earmark-text navicon"></i>Resume</a
             >
           </li>
           <li>
-            <a href="#services"
-              ><i class="bi bi-hdd-stack navicon"></i> Certification</a
+            <a href="index.html#portfolio"
+              ><i class="bi bi-images navicon"></i>Portfolio</a
             >
           </li>
           <li>
-            <a href="#contact"
-              ><i class="bi bi-envelope navicon"></i> Contact</a
+            <a href="index.html#Certification"
+              ><i class="bi bi-hdd-stack navicon"></i>Certification</a
+            >
+          </li>
+          <li>
+            <a href="index.html#contact"
+              ><i class="bi bi-envelope navicon"></i>Contact</a
             >
           </li>
         </ul>
@@ -133,84 +174,173 @@
       <!-- End Page Title -->
 
       <!-- Portfolio Details Section -->
-      <section id="portfolio-details" class="portfolio-details section">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
           <div class="row gy-4">
+            <!-- SLIDER GAMBAR -->
             <div class="col-lg-8">
-              <div class="portfolio-details-slider swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-                  {
-                    "loop": true,
-                    "speed": 600,
-                    "autoplay": {
-                      "delay": 5000
-                    },
-                    "slidesPerView": "auto",
-                    "pagination": {
-                      "el": ".swiper-pagination",
-                      "type": "bullets",
-                      "clickable": true
-                    }
-                  }
-                </script>
-
+              <div class="portfolio-details-slider swiper">
                 <div class="swiper-wrapper align-items-center">
                   <div class="swiper-slide">
-                    <img src="assets/img/portfolio/app-1.jpg" alt="" />
+                    <img
+                      src="assets/img/Dashboard.png"
+                      class="img-fluid"
+                      alt=""
+                    />
                   </div>
 
                   <div class="swiper-slide">
-                    <img src="assets/img/portfolio/product-1.jpg" alt="" />
+                    <img
+                      src="assets/img/skripsi.png"
+                      class="img-fluid"
+                      alt=""
+                    />
                   </div>
 
                   <div class="swiper-slide">
-                    <img src="assets/img/portfolio/branding-1.jpg" alt="" />
+                    <img src="assets/img/jadwal.png" class="img-fluid" alt="" />
                   </div>
 
                   <div class="swiper-slide">
-                    <img src="assets/img/portfolio/books-1.jpg" alt="" />
+                    <img
+                      src="assets/img/analisis_text.png"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/img/skripsi1.png"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/img/skripsi2.png"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="swiper-slide">
+                    <img src="assets/img/SI.png" class="img-fluid" alt="" />
                   </div>
                 </div>
                 <div class="swiper-pagination"></div>
               </div>
             </div>
 
+            <!-- INFO PROJECT -->
             <div class="col-lg-4">
-              <div
-                class="portfolio-info"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <h3>Project information</h3>
+              <div class="portfolio-info">
+                <h3>Project Information</h3>
                 <ul>
-                  <li><strong>Category</strong>: Web design</li>
-                  <li><strong>Client</strong>: ASU Company</li>
-                  <li><strong>Project date</strong>: 01 March, 2020</li>
                   <li>
-                    <strong>Project URL</strong>:
-                    <a href="#">www.example.com</a>
+                    <strong>Category</strong>: <span id="proj-category"></span>
+                  </li>
+                  <li><strong>Topic</strong>: <span id="proj-topic"></span></li>
+                  <li>
+                    <strong>Project Year</strong>: <span id="proj-year"></span>
                   </li>
                 </ul>
               </div>
-              <div
-                class="portfolio-description"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <h2>Exercitationem repudiandae officiis neque suscipit</h2>
-                <p>
-                  Autem ipsum nam porro corporis rerum. Quis eos dolorem eos
-                  itaque inventore commodi labore quia quia. Exercitationem
-                  repudiandae officiis neque suscipit non officia eaque itaque
-                  enim. Voluptatem officia accusantium nesciunt est omnis
-                  tempora consectetur dignissimos. Sequi nulla at esse enim cum
-                  deserunt eius.
-                </p>
+
+              <div class="portfolio-description">
+                <h2 id="proj-title"></h2>
+                <p id="proj-desc"></p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+      <script>
+        const projectData = [
+          {
+            category: "Data Visualization",
+            topic: "Geospatial & Time-Series Analysis",
+            year: "2023",
+            title: "COVID-19 Distribution Dashboard – Indonesia",
+            desc: "This project presents an interactive data visualization dashboard analyzing the spatial and temporal spread of COVID-19 in Indonesia. The system integrates choropleth mapping, daily case trend analysis, and province-level comparisons of confirmed cases, recoveries, and deaths. By combining geospatial visualization with time-series data, the dashboard provides insights into pandemic growth patterns, regional severity, and recovery distribution.",
+          },
+          {
+            category: "Data Analysis",
+            topic: "Heart Disease Risk Factor Analysis",
+            year: "2023",
+            title: "Feature Importance Analysis for Cardiovascular Diagnosis",
+            desc: "This project analyzes clinical patient data to identify the most influential risk factors associated with heart disease diagnosis. Using machine learning techniques and feature importance analysis, the study highlights key predictors such as age, hypertension, cholesterol, and diabetes. The project demonstrates how healthcare data can support early risk detection and clinical decision-making.",
+          },
+          {
+            category: "Automation",
+            topic: "Automated WFH–WFO Scheduling System",
+            year: "2025",
+            title: "Automated Hybrid Work Scheduling System",
+            desc: "This project develops an automated scheduling system to manage employee work arrangements in a hybrid (WFH–WFO) model. Using rule-based logic and randomized weekly distribution, the system ensures fair rotation, balanced on-site presence, and constraint-based assignment of remote workdays. The solution improves operational efficiency and reduces manual scheduling effort.",
+          },
+          {
+            category: "Machine Learning",
+            topic: "Automated Text Analysis",
+            year: "2025",
+            title: "Machine Learning-Based Text Classification System",
+            desc: "This project builds a machine learning–based text classification system using TF-IDF feature extraction and ensemble models such as Random Forest. The pipeline includes text preprocessing, vectorization, model training, evaluation, and model serialization for deployment. The solution enables automated analysis and categorization of textual data to support data-driven decision making.",
+          },
+          {
+            category: "Machine Learning",
+            topic: "Heart Disease Prediction Using Machine Learning",
+            year: "2023",
+            title: "Heart Disease Classification Using Random Forest",
+            desc: "This project develops a machine learning model to classify heart disease risk using patient clinical data. A Random Forest algorithm was applied to identify significant health factors and predict disease presence. The model achieved an accuracy of 83% and an AUC-ROC score of 0.90, indicating strong classification performance and reliable discrimination capability. This system can support early detection and assist medical decision-making.",
+          },
+          {
+            category: "Machine Learning",
+            topic: "Heart Disease Prediction Using Machine Learning",
+            year: "2023",
+            title: "Heart Disease Classification Using Naïve Bayes",
+            desc: "This project implements a Naive Bayes classifier to predict heart disease based on patient clinical data. The model serves as a probabilistic baseline for comparison with more complex algorithms. It achieved an accuracy of 81% and an AUC-ROC score of 0.78, demonstrating reasonable predictive capability while maintaining computational simplicity and efficiency.",
+          },
+
+          {
+            category: "Data Analysis",
+            topic: "Customer Country Segmentation Based on Profit Indicators",
+            year: "2023",
+            title: "Customer Country Segmentation Using K-Means Clustering",
+            desc: "This project applies K-Means Clustering to segment customer countries based on profitability indicators from the Global Superstore dataset. The clustering results reveal distinct market groups with different revenue potential, cost structures, and profit performance. These insights can support strategic decision-making in marketing focus, pricing strategies, and regional business expansion.",
+          },
+        ];
+
+        function updateProjectInfo(index) {
+          const data = projectData[index];
+          document.getElementById("proj-category").textContent = data.category;
+          document.getElementById("proj-topic").textContent = data.topic;
+          document.getElementById("proj-year").textContent = data.year;
+          document.getElementById("proj-title").textContent = data.title;
+          document.getElementById("proj-desc").textContent = data.desc;
+        }
+
+        const swiper = new Swiper(".portfolio-details-slider", {
+          speed: 600,
+          loop: true,
+          autoplay: { delay: 4000 },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          on: {
+            init: function () {
+              updateProjectInfo(this.realIndex);
+            },
+            slideChange: function () {
+              updateProjectInfo(this.realIndex);
+            },
+          },
+        });
+      </script>
+
       <!-- /Portfolio Details Section -->
     </main>
 
